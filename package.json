@@ -1,0 +1,23 @@
+{
+  "name": "phat-frame-template",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "phat-fn build --experimentalAsync",
+    "test": "tsx src/test.ts",
+    "lint": "tsc --noEmit",
+    "publish": "phat-fn build --experimentalAsync && tsx scripts/publish.ts"
+  },
+  "devDependencies": {
+    "@phala/fn": "~0.2.14",
+    "tsx": "^4.7.0",
+    "typechain": "^8.1.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@coinbase/onchainkit": "^0.5.4"
+  }
+}
