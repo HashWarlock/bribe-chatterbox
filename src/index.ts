@@ -50,11 +50,17 @@ async function getResponse(req: Request): Promise<Response> {
     let input = 'BRIBE ME';
     let username = '';
     let imageUrl = BASE_URL + req.path + `?key=${secret[0]}&getChatterBox=${Math.random()}`;
+    let frameMetadata;
+    let buttons = [
+        {
+            label: '🤫 Send'
+        },
+    ];
 
     const body: FrameRequest = await req.json();
 
     const { isValid, message } = await getFrameMessage(body, { neynarApiKey: `${apiKey}`});
-
+    const buttonIndex = message?.button;
     if (isValid) {
         if (req.queries?.send) {
             const fid = message.interactor.fid;
@@ -69,18 +75,25 @@ async function getResponse(req: Request): Promise<Response> {
             if (username !== '') {
                 await insertMessage(`${supabaseApiKey}`, username, input);
             } else {
-                imageUrl += `&tip=${Math.random()}`;
+                if (buttonIndex == 1) {
+                    imageUrl += `&tip=${Math.random()}`;
+                    buttons.push({
+                        label: 'Go 🔙'
+                    })
+                }
             }
         }
     } else {
-        imageUrl += `&tip=${Math.random()}`;
+        if (buttonIndex && buttonIndex == 1) {
+            imageUrl += `&tip=${Math.random()}`;
+            buttons.push({
+                label: 'Go 🔙'
+            })
+        }
     }
-    const frameMetadata = getFrameMetadata({
-        buttons: [
-            {
-                label: 'Send',
-            },
-        ],
+
+    frameMetadata = getFrameMetadata({
+        buttons: buttons,
         input: { text: '/bribe me' },
         image: imageUrl,
         postUrl: BASE_URL + req.path + `?key=${secret[0]}&send=true`,

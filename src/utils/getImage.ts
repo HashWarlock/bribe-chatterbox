@@ -12,8 +12,8 @@ function getTipTag(req: Request) {
       <path id="path2" fill="${tipBoxBgColor}" stroke="${outlineColor}" stroke-width="5" d="M 70 280 L 1130 280 L 1130 580 L 70 580 Z"/>
       <text id="Tip" x="520" y="250" font-family="Courier" font-size="36" font-weight="700" fill="${historyFontColor}">📝Tip</text>    
       <text id="Must-Bribe"><tspan x="100" y="350" font-family="Courier" font-size="36" font-weight="700" fill="${historyFontColor}">Must <tspan fill="${whiteFontColor}" text-decoration="underline">BRIBE</tspan> to execute action.</tspan></text>
-      <text id="Y" x="100" y="420" font-family="Courier" font-size="36" font-weight="700" fill="${historyFontColor}">🥸️Y</text>
-      <text id="No" x="100" y="480" font-family="Courier" font-size="36" font-weight="700" fill="${historyFontColor}">☠️NO</text>
+      <text id="Y" x="100" y="420" font-family="Courier" font-size="36" font-weight="700" fill="${historyFontColor}">🥸️ Y</text>
+      <text id="No" x="100" y="480" font-family="Courier" font-size="36" font-weight="700" fill="${historyFontColor}">☠️ NO</text>
       <text id="BRIBE?" x="100" y="540" font-family="Courier" font-size="36" font-weight="700" fill="${historyFontColor}" >🫴 BR<tspan font-size="40">I</tspan>BE</text>
     </g>`;
 }
