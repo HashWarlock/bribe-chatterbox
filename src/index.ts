@@ -68,6 +68,8 @@ async function getResponse(req: Request): Promise<Response> {
             }
             if (username !== '') {
                 await insertMessage(`${supabaseApiKey}`, username, input);
+            } else {
+                imageUrl += `&tip=${Math.random()}`;
             }
         }
     } else {
